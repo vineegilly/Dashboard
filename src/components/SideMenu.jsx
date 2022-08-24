@@ -1,4 +1,5 @@
 import React from "react";
+import { withStyles } from "@material-ui/core/styles";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -14,12 +15,40 @@ const MenuItem = ({ item }) => {
   return <Component item={item} />;
 };
 
+const StyledListItem = withStyles({
+  root: {
+    borderRadius: "10px",
+    "&$selected": {
+      backgroundColor: "white",
+      color: "#524e4a",
+      "& .MuiListItemIcon-root": {
+        color: "#524e4a"
+      }
+    },
+    "&$selected:hover": {
+      backgroundColor: "white",
+      color: "#524e4a",
+      "& .MuiListItemIcon-root": {
+        color: "#524e4a"
+      }
+    },
+    "&:hover": {
+      backgroundColor: "white",
+      color: "#524e4a",
+      "& .MuiListItemIcon-root": {
+        color: "#524e4a"
+      }
+    }
+  },
+  selected: {}
+})(ListItem);
+
 const SingleLevel = ({ item }) => {
   return (
-    <ListItem button>
+    <StyledListItem button style={{marginBottom: '20px'}}>
       <ListItemIcon>{item.icon}</ListItemIcon>
       <ListItemText primary={item.title} />
-    </ListItem>
+    </StyledListItem>
   );
 };
 

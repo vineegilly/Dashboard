@@ -123,28 +123,15 @@ export default function TableNav() {
         </List>
       </Drawer>
       <Main open={open}>
-      <Grid container spacing={3}>
-          {/* <Grid item xs={6}>
-            <Paper style={{ background: '#e1dbff' }}>
-              <Grid container spacing={2}>
-                <Grid item xs={3}>
-                  <SearchOutlinedIcon />
-                </Grid>
-              </Grid>
-            </Paper>
-          </Grid> */}
-          <Grid container spacing={3}>
-          <Grid item xs={6} spacing={3}>
+        <Grid container spacing={3}>
+          <Grid item xs={6}>
             <SearchCard />
           </Grid>
-          <Grid item xs={6} spacing={3}>
+          <Grid item xs={6}>
             <Card />
           </Grid>
-        </Grid>
-        </Grid>
-        <Grid container spacing={3}>
           <Grid item xs={3}>
-            <Paper style={{ background: '#e1dbff' }}>
+            <Paper style={{ background: '#e1dbff', padding: '20px' }}>
               <SideMenu />
             </Paper>
           </Grid>
@@ -152,8 +139,6 @@ export default function TableNav() {
             <MuiTable />
           </Grid>
         </Grid>
-
-
       </Main>
     </Box>
   );
