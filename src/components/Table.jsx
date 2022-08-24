@@ -1,55 +1,7 @@
-import {
-  TableContainer,
-  Table,
-  TableHead,
-  TableBody,
-  TableRow,
-  TableCell,
-  Paper
-} from '@mui/material'
+import React from 'react';
+import { DataGrid } from '@mui/x-data-grid';
 
-import { styled } from '@mui/system'
-
-const StyledTableContainer = styled(TableContainer)`
-  
-`;
-
-const StyledTable = styled(Table)`
-
-`;
-const StyledTableHead = styled(TableHead)`
-
-`;
-export default function MuiTable() {
-  return (
-    <StyledTableContainer sx={{ maxHeight: '100%' }} component={Paper}>
-      <StyledTable stickyHeader aria-label='simple table'>
-        <StyledTableHead>
-          <TableRow>
-            <TableCell>Id</TableCell>
-            <TableCell>First Name</TableCell>
-            <TableCell>Last Name</TableCell>
-            <TableCell align='center'>Email</TableCell>
-          </TableRow>
-        </StyledTableHead>
-        <TableBody>
-          {tableData.map(row => (
-            <TableRow
-              key={row.id}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-              <TableCell>{row.id}</TableCell>
-              <TableCell>{row.first_name}</TableCell>
-              <TableCell>{row.last_name}</TableCell>
-              <TableCell align='center'>{row.email}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </StyledTable>
-    </StyledTableContainer>
-  )
-}
-
-const tableData = [
+const rows = [
   {
     id: 1,
     first_name: 'Beret',
@@ -92,3 +44,32 @@ const tableData = [
   },
   
 ]
+
+const columns = [
+  { field: 'id', headerName: 'ID', width: 70 },
+  { field: 'first_name', headerName: 'First name', width: 130 },
+  { field: 'last_name', headerName: 'Last name', width: 130 },
+  { field: 'email', headerName: 'Last name', width: 130 },
+  { field: 'gender', headerName: 'Last name', width: 130, sortable: false },
+  { field: 'ip_address', headerName: 'Last name', width: 130, sortable: false },
+];
+
+export default function MuiTable() {
+  return (
+    <DataGrid
+      sx={{
+        border: '0',
+        color: '#605a54',
+        '.MuiDataGrid-columnHeaders': {
+          background: '#fef4ea',
+        },
+      }}
+      rows={rows}
+      columns={columns}
+      pageSize={10}
+      rowsPerPageOptions={[10]}
+      checkboxSelection
+      hideFooter={true}
+    />
+  );
+}
